@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Capitalize</h1>
+        <input type="text" placeholder="Enter any sentence" id="input">
+        <button id="btn">Capitalize</button>   
+        <button id="reverse">Reverse</button>
+        <button id="reverseWord">Reverse Word By Word</button>
+    </div>
+    <div id="output"></div>
+
+    <script>
+        let input = document.getElementById("input");
+        let btn = document.getElementById("btn");
+        let output = document.getElementById("output");
+        let reverseBtn = document.getElementById("reverse");
+        let reverseWordBtn = document.getElementById("reverseWord");
+
+        btn.addEventListener('click', () => {
+            let inputValue = input.value;
+            let res = capitalize(inputValue);
+            output.innerHTML = `<h2>${res}</h2>`;
+        });
+
+        reverseBtn.addEventListener('click', () => {
+            let inputValue = input.value;
+            let res = reverse(inputValue);
+            output.innerHTML = `<h2>${res}</h2>`;
+        });
+
+        reverseWordBtn.addEventListener('click', () => {
+            let inputValue = input.value;
+            let res = reverseWord(inputValue);
+            output.innerHTML = `<h2>${res}</h2>`;
+        });
+
+        function capitalize(str) {
+            let s = '';
+            for (let i = 0; i < str.length; i++) {
+                if (i === 0 || str[i - 1] === ' ') {
+                    s += str[i].toUpperCase();
+                } else {
+                    s += str[i];
+                }
+            }
+            return s;
+        }
+
+        function reverse(str) {
+            let rev = '';
+            for (let i = str.length - 1; i >= 0; i--) {
+                rev += str[i];
+            }
+            return rev;
+        }
+
+        function reverseWord(str) {
+            return str.split(" ").reverse().join(" ");
+        }
+    </script>
+</body>
+</html>
